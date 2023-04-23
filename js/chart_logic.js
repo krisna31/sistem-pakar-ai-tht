@@ -1,4 +1,4 @@
-import { Chart } from "chart.js/auto";
+import { Chart, scales } from "chart.js/auto";
 
 let diseasesChart = null
 
@@ -10,16 +10,18 @@ function showChart(matchDiseases) {
     Object.entries(matchDiseases).sort(([,a],[,b]) => b-a)
   );
 
+
   const data = {
-    labels: Object.keys(sortedDiseases).map((key) => [key]),
+    labels: Object.keys(sortedDiseases).map((key) => key),
     datasets: [
       {
         label: 'Percentage',
-        data: Object.keys(sortedDiseases).map((key) => [sortedDiseases[key]]),
+        data: Object.keys(sortedDiseases).map((key) => sortedDiseases[key]),
         borderColor: 'rgb(54, 162, 235)',
       }
     ]
   };
+
   const config = {
     type: 'bar',
     data: data,
@@ -38,6 +40,12 @@ function showChart(matchDiseases) {
         title: {
           display: true,
           text: 'Disease Chart based on symptoms'
+        }
+      },
+      scales: {
+        x: {
+          min : 0,
+          max: 100
         }
       }
     },

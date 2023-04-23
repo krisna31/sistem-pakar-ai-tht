@@ -27,7 +27,7 @@ function addSymptomSelect() {
   newParentDiv.setAttribute('id', `elSelectParent${INDEX}`)
 
   const newInnerDiv = document.createElement('div')
-  newInnerDiv.setAttribute('class', 'col-8 col-md-8 col-lg-6 mb-3')
+  newInnerDiv.setAttribute('class', 'col-10 col-lg-6 mb-3')
 
   const newSelect = document.createElement('select')
   newSelect.title = 'elSelect'
