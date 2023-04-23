@@ -1,67 +1,57 @@
 import { symptoms } from "./js/sistem_pakar";
 
 let INDEX = 0
-function deleteSymptomSelect(index) {
+
+addSymptomSelect(INDEX)
+
+function deleteSymptomSelect() {
+  console.log(INDEX);
   if (INDEX <= 1) {
     alert('minimal 1 gejala')
     return
   }
   
-  document.getElementById(`elSelectParent${index}`).remove()
+  document.getElementById(`elSelectParent${INDEX-1}`).remove()
   INDEX--
 }
 
-function addSymptomSelect(index) {
-  if (index > 36) {
+function addSymptomSelect() {
+  if (INDEX > 36) {
     alert('Gejala sudah maksimum')
     return
   }
-  if (INDEX === 0)
-    document.getElementById('formGejala').innerHTML += `
-        <div class="row d-flex justify-content-center align-items-center" id="elSelectParent${index}">
-        <div class="col-8 col-md-8 col-lg-6 mb-3">
-          <select title="elSelect" id="elSelect${index}" class="form-control">
-            <option value="">Please select</option>
-          </select>
-        </div>
-        <div class="col-2 mb-3">
-          <button class="btn btn-secondary disabled" id="deleteSymptomSelect${index}">
-            <i class="bi bi-x"></i>
-          </button>
-        </div>
-      </div>
-    `
-  else
-    document.getElementById('formGejala').innerHTML += `
-      <div class="row d-flex justify-content-center align-items-center" id="elSelectParent${index}">
-        <div class="col-8 col-md-8 col-lg-6 mb-3">
-          <select title="elSelect" id="elSelect${index}" class="form-control">
-            <option value="">Please select</option>
-          </select>
-        </div>
-        <div class="col-2 mb-3">
-          <button class="btn btn-danger" id="deleteSymptomSelect${index}">
-            <i class="bi bi-x"></i>
-          </button>
-        </div>
-      </div>
-    `
 
-  const selectElement = document.querySelector(`#elSelect${index}`)
+  document.getElementById('formGejala').innerHTML += `
+      <div class="row d-flex justify-content-center align-items-center" id="elSelectParent${INDEX}">
+      <div class="col-8 col-md-8 col-lg-6 mb-3">
+        <select title="elSelect" id="elSelect${INDEX}" class="form-control">
+          <option value="">Please select</option>
+        </select>
+      </div>
+    </div>
+  `
+
+  const selectElement = document.querySelector(`#elSelect${INDEX}`)
   for (const [_, symptom] of Object.entries(symptoms)) {
     selectElement.add(new Option(symptom));
   }
   
-  for (let idx = 1; idx <= INDEX; idx++) {
-    document.getElementById(`deleteSymptomSelect${idx}`)
-    .addEventListener('click', _ => deleteSymptomSelect(idx), true)
-  }
-
+  
   INDEX++
 }
 
-document.getElementById('add_symptom').addEventListener('click', _ => addSymptomSelect(INDEX))
+function submitSymptoms() {
+  const formGejala = document.querySelector('#formGejala')
+  console.log(formGejala);
+}
 
-addSymptomSelect(INDEX)
+document.getElementById('add_symptom')
+  .addEventListener('click', addSymptomSelect)
+document.getElementById(`deleteSymptomSelect`)
+  .addEventListener('click', deleteSymptomSelect)
+
+
 // showChart(diseases)
 // showChart(checkDiseases([1, 3, 7, 13, 14]))
+
+document.getElementById('show_chart').addEventListener('click', _ => submitSymptoms())
