@@ -32,7 +32,8 @@ function showChart(matchDiseases) {
           borderWidth: 2,
         }
       },
-      responsive: true,
+      // responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'right',
