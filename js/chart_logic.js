@@ -1,11 +1,14 @@
 import { Chart } from "chart.js/auto";
 
+let diseasesChart = null
+
 function showChart(matchDiseases) {
   // chart.js
+  const ctx = document.getElementById('myChart').getContext("2d")
+  if (diseasesChart) diseasesChart.destroy()
   const sortedDiseases = Object.fromEntries(
     Object.entries(matchDiseases).sort(([,a],[,b]) => b-a)
   );
-  const ctx = document.getElementById('myChart');
 
   const data = {
     labels: Object.keys(sortedDiseases).map((key) => [key]),
@@ -40,5 +43,7 @@ function showChart(matchDiseases) {
     },
   };
 
-  new Chart(ctx, config);
+  diseasesChart = new Chart(ctx, config);
 }
+
+export {showChart}

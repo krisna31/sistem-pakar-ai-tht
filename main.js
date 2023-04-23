@@ -1,4 +1,5 @@
-import { symptoms } from "./js/sistem_pakar";
+import { showChart } from "./js/chart_logic";
+import { checkDiseases, symptoms } from "./js/sistem_pakar";
 
 let INDEX = 0
 
@@ -16,33 +17,46 @@ function deleteSymptomSelect() {
 }
 
 function addSymptomSelect() {
-  if (INDEX > 36) {
+  if (INDEX > 38) {
     alert('Gejala sudah maksimum')
     return
   }
 
-  document.getElementById('formGejala').innerHTML += `
-      <div class="row d-flex justify-content-center align-items-center" id="elSelectParent${INDEX}">
-      <div class="col-8 col-md-8 col-lg-6 mb-3">
-        <select title="elSelect" id="elSelect${INDEX}" class="form-control">
-          <option value="">Please select</option>
-        </select>
-      </div>
-    </div>
-  `
+  const newParentDiv = document.createElement('div')
+  newParentDiv.setAttribute('class', 'row d-flex justify-content-center align-items-center')
+  newParentDiv.setAttribute('id', `elSelectParent${INDEX}`)
+
+  const newInnerDiv = document.createElement('div')
+  newInnerDiv.setAttribute('class', 'col-8 col-md-8 col-lg-6 mb-3')
+
+  const newSelect = document.createElement('select')
+  newSelect.title = 'elSelect'
+  newSelect.setAttribute('class', 'form-control')
+  newSelect.setAttribute('id', `elSelect${INDEX}`)
+
+  // rakit lego
+  newInnerDiv.appendChild(newSelect)
+  newParentDiv.appendChild(newInnerDiv)
+
+  document.getElementById('formGejala').appendChild(newParentDiv)
+
 
   const selectElement = document.querySelector(`#elSelect${INDEX}`)
-  for (const [_, symptom] of Object.entries(symptoms)) {
-    selectElement.add(new Option(symptom));
+  for (const [key, symptom] of Object.entries(symptoms)) {
+    const option = new Option(symptom)
+    option.value = key
+    selectElement.add(option);
   }
-  
-  
   INDEX++
 }
 
 function submitSymptoms() {
-  const formGejala = document.querySelector('#formGejala')
-  console.log(formGejala);
+  let arrSubmittedSymptoms = []
+  for (let index = 0; index < INDEX; index++) {
+    arrSubmittedSymptoms.push(Number(document.getElementById(`elSelect${index}`).value))
+  }
+  arrSubmittedSymptoms = [...new Set(arrSubmittedSymptoms)]
+  showChart(checkDiseases(arrSubmittedSymptoms))
 }
 
 document.getElementById('add_symptom')
@@ -50,8 +64,5 @@ document.getElementById('add_symptom')
 document.getElementById(`deleteSymptomSelect`)
   .addEventListener('click', deleteSymptomSelect)
 
-
-// showChart(diseases)
-// showChart(checkDiseases([1, 3, 7, 13, 14]))
 
 document.getElementById('show_chart').addEventListener('click', _ => submitSymptoms())
