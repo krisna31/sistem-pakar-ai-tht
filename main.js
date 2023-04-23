@@ -1,7 +1,6 @@
 import { symptoms } from "./js/sistem_pakar";
 
 let INDEX = 0
-
 function deleteSymptomSelect(index) {
   if (INDEX <= 1) {
     alert('minimal 1 gejala')
@@ -48,7 +47,6 @@ function addSymptomSelect(index) {
       </div>
     `
 
-  // $(`#elSelect${index}`).select2();
   const selectElement = document.querySelector(`#elSelect${index}`)
   for (const [_, symptom] of Object.entries(symptoms)) {
     selectElement.add(new Option(symptom));
@@ -64,10 +62,6 @@ function addSymptomSelect(index) {
 
 document.getElementById('add_symptom').addEventListener('click', _ => addSymptomSelect(INDEX))
 
-$(document).ready(function() {
-  addSymptomSelect(INDEX)
-  
-  // showChart(diseases)
-  // showChart(checkDiseases([1, 3, 7, 13, 14]))
-});
-
+addSymptomSelect(INDEX)
+// showChart(diseases)
+// showChart(checkDiseases([1, 3, 7, 13, 14]))
