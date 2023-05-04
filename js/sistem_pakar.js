@@ -1,5 +1,46 @@
 
 // Define the symptoms and their corresponding numbers
+const sortedSymptomsMap = new Map([
+  [21, "Ada yang tumbuh di mulut"],
+  [22, "Air liur menetes"],
+  [4, "Batuk"],
+  [12, "Benjolan di leher"],
+  [23, "Berat badan turun"],
+  [17, "Bola mata bergerak tanpa sadar"],
+  [24, "Bunyi nafas abnormal"],
+  [18, "Dahi sakit"],
+  [1, "Demam"],
+  [8, "Hidung meler"],
+  [5, "Hidung tersumbat"],
+  [25, "Infeksi sinus"],
+  [19, "Leher bengkak"],
+  [9, "Letih lesu"],
+  [10, "Mual muntah"],
+  [26, "Nyeri antara mata"],
+  [3, "Nyeri bicara menelan"],
+  [13, "Nyeri leher"],
+  [27, "Nyeri pinggir hidung"],
+  [28, "Nyeri pipi di bawah mata"],
+  [6, "Nyeri telinga"],
+  [7, "Nyeri tenggorokan"],
+  [29, "Nyeri wajah"],
+  [14, "Pembengkakan kelenjar getah bening"],
+  [15, "Pendarahan hidung"],
+  [30, "Perubahan kulit"],
+  [31, "Perubahan suara"],
+  [32, "Radang gendang telinga"],
+  [33, "Sakit gigi"],
+  [2, "Sakit kepala"],
+  [11, "Selaput lendir merah bengkak"],
+  [34, "Serangan vertigo"],
+  [16, "Suara serak"],
+  [35, "Telinga berdenging"],
+  [36, "Telinga terasa penuh"],
+  [37, "Tenggorokan gatal"],
+  [38, "Tubuh tak seimbang"],
+  [20, "Tuli"]
+]);
+
 const symptoms = {
   1: "Demam",
   2: "Sakit kepala",
@@ -93,4 +134,4 @@ function checkDiseases(symptoms) {
   return diseasesMatched;
 }
 
-export {diseases, symptoms, checkDiseases}
+export {diseases, symptoms, checkDiseases, sortedSymptomsMap}

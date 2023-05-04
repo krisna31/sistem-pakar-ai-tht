@@ -1,5 +1,5 @@
 import { showChart } from "./chart_logic";
-import { checkDiseases, symptoms } from "./sistem_pakar";
+import { checkDiseases, sortedSymptomsMap, symptoms } from "./sistem_pakar";
 
 // create global variable for uid
 let INDEX = 0
@@ -39,13 +39,13 @@ function addSymptomSelect() {
 
   document.getElementById('formGejala').appendChild(newParentDiv)
 
-
   const selectElement = document.querySelector(`#elSelect${INDEX}`)
-  for (const [key, symptom] of Object.entries(symptoms)) {
+  sortedSymptomsMap.forEach((symptom, key) => {
     const option = new Option(symptom)
     option.value = key
     selectElement.add(option);
-  }
+  })
+
   INDEX++
 }
 
