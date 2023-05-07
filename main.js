@@ -11,3 +11,8 @@ document.getElementById(`deleteSymptomSelect`)
   .addEventListener('click', deleteSymptomSelect)
 document.getElementById('show_chart')
   .addEventListener('click', submitSymptoms)
+
+  // intro js
+  introJs()
+    .setOption("dontShowAgain", true)
+    .start();

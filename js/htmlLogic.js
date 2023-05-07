@@ -1,5 +1,5 @@
 import { showChart } from "./chart_logic";
-import { checkDiseases, sortedSymptomsMap, symptoms } from "./sistem_pakar";
+import { checkDiseases, sortedSymptomsMap } from "./sistem_pakar";
 
 // create global variable for uid
 let INDEX = 0
