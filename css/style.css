@@ -1,0 +1,19 @@
+.introjs-dontShowAgain label {
+  font-size: 14px;
+  display: inline-block;
+  font-weight: 400;
+  margin: 0 0 0 5px;
+  padding: 0;
+  background: #474747;
+  color: #fff;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+span.current {
+  font-size: large;
+}
+
+body {
+  overflow-x: hidden;
+}
