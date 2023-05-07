@@ -5,9 +5,10 @@ import { checkDiseases, sortedSymptomsMap } from "./sistem_pakar";
 let INDEX = 0
 
 function deleteSymptomSelect() {
-  console.log(INDEX);
   if (INDEX <= 1) {
-    alert('minimal 1 gejala')
+    const warnModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {})
+    warnModal.show()
+    document.querySelector("#understood").addEventListener("click",()=>warnModal.hide())
     return
   }
   
@@ -45,6 +46,7 @@ function addSymptomSelect() {
     option.value = key
     selectElement.add(option);
   })
+
 
   INDEX++
 }

@@ -1,5 +1,6 @@
 // import necceseary js
 import { addSymptomSelect, deleteSymptomSelect, submitSymptoms } from "./js/htmlLogic";
+import initIntroJs from "./js/initIntroJs";
 
 // add one select to form just run once
 addSymptomSelect()
@@ -12,9 +13,4 @@ document.getElementById(`deleteSymptomSelect`)
 document.getElementById('show_chart')
   .addEventListener('click', submitSymptoms)
 
-  // intro js
-  introJs()
-    .setOption("dontShowAgain", true)
-    .setOption("showBullets", false)
-    .setOption("showProgress", true)
-    .start();
+  initIntroJs()
