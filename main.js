@@ -15,4 +15,6 @@ document.getElementById('show_chart')
   // intro js
   introJs()
     .setOption("dontShowAgain", true)
+    .setOption("showBullets", false)
+    .setOption("showProgress", true)
     .start();
