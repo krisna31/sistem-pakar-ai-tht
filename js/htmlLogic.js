@@ -31,7 +31,7 @@ function addSymptomSelect() {
 
   const newSelect = document.createElement('select')
   newSelect.title = 'elSelect'
-  newSelect.setAttribute('class', 'form-control')
+  newSelect.setAttribute('class', 'form-control wide')
   newSelect.setAttribute('id', `elSelect${INDEX}`)
 
   // rakit lego
@@ -47,6 +47,9 @@ function addSymptomSelect() {
     selectElement.add(option);
   })
 
+
+  const options = {searchable: true};
+    NiceSelect.bind(document.getElementById(`elSelect${INDEX}`), options);
 
   INDEX++
 }
